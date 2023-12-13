@@ -4,8 +4,10 @@ import { createSlice } from "@reduxjs/toolkit";
 export const authSlice = createSlice({
     name: "authorization",
     initialState: {
+        user: {name: null, email: null},
         isLoggedin: false,
-        token: ""
+        token: "",
+        isRefreshing: false
     },
 
     extraReducers: (builder) => {
@@ -14,3 +16,5 @@ export const authSlice = createSlice({
     }
 
 })
+
+export const filterReducer = authSlice.reducer;

@@ -6,6 +6,7 @@ import { filterReducer } from "./filterSlice";
 const rootReducer = combineReducers({
         contacts: contactsReducer,
         filter: filterReducer,
+        authorization: filterReducer
 })
 
 
