@@ -1,46 +1,78 @@
-import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Error, StyledForm, StyledInput, StyledLabel } from './LoginForm.styled';
+import {
+    Box,
+    Button,
+    Flex,
+    FormControl,
+    FormErrorMessage,
+    FormLabel,
+    Input,
+    Text,
+    VStack
+} from "@chakra-ui/react";
+import { useFormik } from "formik";
 
 
 const schema = Yup.object().shape({
+    name: Yup.string().min(3, "Too short").required('Required'),
     email: Yup.string().email().required('Required'),
     password: Yup.string().min(5, "Too short").required('Required'),
 });
 
+
 export const LoginForm = () => {
 
-    const handleSignIn = values => {
-        console.log(values);
-    }
 
-    return (
-    <Formik
-
-        initialValues={{ 
+    const formik = useFormik({
+        initialValues: {
+            name: '',
             email: '',
             password: '',
-        }}
-        validationSchema={schema}
-        onSubmit={(values, actions) => {              
-            handleSignIn(values);
-                actions.resetForm();
+        },
+        validationSchema: schema,
+        onSubmit: (values) => {  
+            console.log(values);           
             }}
-     >
-        <StyledForm>
+    )
 
-        <StyledLabel>
-        <StyledInput type="email" name="email" />
-        <Error name="email" component="p"/>
-        </StyledLabel>
-
-        <StyledLabel>
-        <StyledInput type="password" name="password"/>
-        <Error name="password" component="p"/>
-        </StyledLabel>
-
-        <button type="submit">Sign Up</button>
-    </StyledForm>
-
-    </Formik>
-)}
+    return (
+        <Flex bg="gray.100" align="center" justify="center" h="100vh">
+            <Box bg="white" p={6} rounded="md">
+                <form onSubmit={formik.handleSubmit}>
+                    <VStack spacing={4} align="flex-start">
+                    <Text fontSize="2xl" fontWeight="bold" marginRight="auto" marginLeft="auto">Login</Text>
+                        <FormControl isInvalid={formik.touched.email && formik.errors.email}>
+                            <FormLabel htmlFor="email">Email Address</FormLabel>
+                            <Input
+                                name="email"
+                                id="email"
+                                type="email"
+                                variant="filled"
+                                onChange={formik.handleChange}
+                                value={formik.values.email}
+                                onBlur={formik.handleBlur}
+                            />
+                            <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+                        </FormControl>
+                        <FormControl isInvalid={formik.touched.password && formik.errors.password}>
+                            <FormLabel htmlFor="password">Password</FormLabel>
+                            <Input
+                                id="password"
+                                name="password"
+                                type="password"
+                                variant="filled"
+                                onChange={formik.handleChange}
+                                value={formik.values.password}
+                                onBlur={formik.handleBlur}
+                            />
+                            <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
+                        </FormControl>
+                        <Button type="submit" colorScheme="purple" width="full" marginTop="4">
+                            Sign In
+                        </Button>
+                    </VStack>
+                </form>
+            </Box>
+        </Flex>
+    );
+    }
