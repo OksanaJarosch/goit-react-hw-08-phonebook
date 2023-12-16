@@ -11,14 +11,14 @@ import {
     PERSIST,
     PURGE,
     REGISTER,
-  } from 'redux-persist';
+} from 'redux-persist';
 
 
-  const authPersistConfig = {
+const authPersistConfig = {
     key: 'auth',
     storage,
     whitelist: ["token"]
-  }
+}
 
 const rootReducer = combineReducers({
         contacts: contactsReducer,

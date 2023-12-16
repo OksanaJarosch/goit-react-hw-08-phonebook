@@ -1,5 +1,5 @@
 import { GlobalStyle } from "GlobalStyle";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./Layout/Layout";
@@ -8,12 +8,22 @@ import HomePage from "pages/HomePage";
 import RegistrationPage from "pages/RegistrationPage";
 import LoginPage from "pages/LoginPage";
 import MyPhonebookPage from "pages/MyPhonebookPage";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsRefreshing } from "redux/authorization/authSelectors";
+import { refresh } from "redux/authorization/authOperations";
 
 
 export const App = () => {
 
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
 
-  return (
+  useEffect(() => {
+    dispatch(refresh())
+  }, [dispatch])
+
+
+  return isRefreshing ? <p>LOADING...</p> : (
     <>
     <Suspense fallback={<p>LOADING...</p>}>
       <Routes>
@@ -30,6 +40,7 @@ export const App = () => {
 
       <Toaster position="top-right"/>
       <GlobalStyle />
-    </> 
+      
+    </>
   )
 };
