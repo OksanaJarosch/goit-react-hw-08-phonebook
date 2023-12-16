@@ -11,6 +11,8 @@ import {
     VStack
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
+import { useDispatch } from 'react-redux';
+import { registration } from 'redux/authorization/authOperations';
 
 
 const schema = Yup.object().shape({
@@ -22,6 +24,7 @@ const schema = Yup.object().shape({
 
 export const RegisterForm = () => {
 
+    const dispatch = useDispatch();
 
     const formik = useFormik({
         initialValues: {
@@ -31,7 +34,8 @@ export const RegisterForm = () => {
         },
         validationSchema: schema,
         onSubmit: (values) => {  
-            console.log(values);           
+            console.log(values); 
+            dispatch(registration(values))          
             }}
     )
 

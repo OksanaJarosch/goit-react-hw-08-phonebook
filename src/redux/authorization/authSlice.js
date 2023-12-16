@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { registration } from "./authOperations";
 
 
 export const authSlice = createSlice({
@@ -12,9 +13,16 @@ export const authSlice = createSlice({
 
     extraReducers: (builder) => {
         builder
-        .addCase()
+        .addCase(registration.pending, (state) => state)
+        .addCase(registration.fulfilled, (state, action) => {
+            console.log(action.payload);
+            state.user = action.payload.user;
+            state.token = action.payload.token;
+            state.isLoggedin = true;
+        })
+        .addCase(registration.rejected, (state) => state)
     }
 
 })
 
-export const filterReducer = authSlice.reducer;
+export const authReducer = authSlice.reducer;
