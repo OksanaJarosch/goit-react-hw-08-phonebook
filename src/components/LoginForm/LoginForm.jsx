@@ -36,7 +36,7 @@ export const LoginForm = () => {
     )
 
     return (
-        <Flex bg="gray.100" align="center" justify="center" h="100vh">
+        <Flex align="center" justify="center" h="100vh">
             <Box bg="white" p={6} rounded="md">
                 <form onSubmit={formik.handleSubmit}>
                     <VStack spacing={4} align="flex-start">
@@ -47,7 +47,7 @@ export const LoginForm = () => {
                                 name="email"
                                 id="email"
                                 type="email"
-                                variant="filled"
+                                variant="outline"
                                 onChange={formik.handleChange}
                                 value={formik.values.email}
                                 onBlur={formik.handleBlur}
@@ -60,7 +60,7 @@ export const LoginForm = () => {
                                 id="password"
                                 name="password"
                                 type="password"
-                                variant="filled"
+                                variant="outline"
                                 onChange={formik.handleChange}
                                 value={formik.values.password}
                                 onBlur={formik.handleBlur}

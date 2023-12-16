@@ -1,5 +1,7 @@
 // import { useSelector } from "react-redux"
-import { MenuContainer } from "./UserMenu.styled"
+import { Link } from "react-router-dom"
+import { ButtonsContainer, MenuContainer } from "./UserMenu.styled"
+import { Button } from "@chakra-ui/react"
 // import { selectUserEmail } from "redux/authorization/authSelectors"
 
 
@@ -9,8 +11,16 @@ export const UserMenu = () => {
 
     return (
         <MenuContainer>
+            <Link to="/">Phonebook</Link>
+
+            <ButtonsContainer>
+            <Button type="button" colorScheme="purple"><Link to="register">Registration</Link></Button>
+        
+            <Button type="button" colorScheme="purple"><Link to="login">Login</Link></Button>
+
             {/* <p>{userEmail}</p> */}
-            <button>Logout</button>
+            <Button type="button" colorScheme="purple">Logout</Button>
+            </ButtonsContainer>
         </MenuContainer>
     )
 }

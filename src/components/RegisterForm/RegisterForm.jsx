@@ -47,7 +47,7 @@ export const RegisterForm = () => {
                                 name="name"
                                 id="name"
                                 type="name"
-                                variant="filled"
+                                variant="outline"
                                 onChange={formik.handleChange}
                                 value={formik.values.name}
                                 onBlur={formik.handleBlur}
@@ -60,7 +60,7 @@ export const RegisterForm = () => {
                                 name="email"
                                 id="email"
                                 type="email"
-                                variant="filled"
+                                variant="outline"
                                 onChange={formik.handleChange}
                                 value={formik.values.email}
                                 onBlur={formik.handleBlur}
@@ -73,7 +73,7 @@ export const RegisterForm = () => {
                                 id="password"
                                 name="password"
                                 type="password"
-                                variant="filled"
+                                variant="outline"
                                 onChange={formik.handleChange}
                                 value={formik.values.password}
                                 onBlur={formik.handleBlur}

@@ -2,7 +2,7 @@ import { GlobalStyle } from "GlobalStyle";
 import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
-import { Layout } from "./Layout";
+import { Layout } from "./Layout/Layout";
 
 import HomePage from "pages/HomePage";
 import RegistrationPage from "pages/RegistrationPage";
