@@ -11,10 +11,11 @@ import {
     VStack
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
+import { useDispatch } from 'react-redux';
+import { login } from 'redux/authorization/authOperations';
 
 
 const schema = Yup.object().shape({
-    name: Yup.string().min(3, "Too short").required('Required'),
     email: Yup.string().email().required('Required'),
     password: Yup.string().min(5, "Too short").required('Required'),
 });
@@ -22,16 +23,16 @@ const schema = Yup.object().shape({
 
 export const LoginForm = () => {
 
+    const dispatch = useDispatch();
 
     const formik = useFormik({
         initialValues: {
-            name: '',
             email: '',
             password: '',
         },
         validationSchema: schema,
         onSubmit: (values) => {  
-            console.log(values);           
+            dispatch(login(values));           
             }}
     )
 

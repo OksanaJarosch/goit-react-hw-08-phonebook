@@ -34,7 +34,6 @@ export const RegisterForm = () => {
         },
         validationSchema: schema,
         onSubmit: (values) => {  
-            console.log(values); 
             dispatch(registration(values))          
             }}
     )
