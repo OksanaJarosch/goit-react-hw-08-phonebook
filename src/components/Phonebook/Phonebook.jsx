@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import { StyledForm, StyledInput, StyledLabel, StyledButton, Error } from './Phonebook.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { Report } from 'notiflix/build/notiflix-report-aio';
-import { addNewContact } from 'redux/operations';
+import { addNewContact } from 'redux/contacts/operations';
 import { selectContacts, selectIsLoading } from 'redux/selectors';
 import toast from 'react-hot-toast';
 

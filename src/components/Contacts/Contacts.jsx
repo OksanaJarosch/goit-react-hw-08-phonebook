@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Contact, Span, Btn } from "./Contacts.styled";
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { useEffect } from "react";
-import { deleteContact, fetchContacts } from "redux/operations";
+import { deleteContact, fetchContacts } from "redux/contacts/operations";
 import { selectContacts, selectError, selectFilter, selectVisibleContacts } from "redux/selectors";
 import toast from 'react-hot-toast';
 

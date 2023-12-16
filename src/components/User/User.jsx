@@ -1,10 +1,10 @@
-import { Phonebook } from "./Phonebook/Phonebook";
-import { Contacts } from "./Contacts/Contacts";
-import { Container, Title } from "./App.styled";
-import { Filter } from "./Filter/Filter"
 import { useSelector } from "react-redux";
 import { selectError, selectIsLoading } from "redux/selectors";
 import { LineWave } from "react-loader-spinner";
+import { Container, Title } from "./User.styled";
+import { Filter } from "components/Filter/Filter";
+import { Phonebook } from "components/Phonebook/Phonebook";
+import { Contacts } from "components/Contacts/Contacts";
 
 
 export const User = () => {
