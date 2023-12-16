@@ -11,9 +11,13 @@ font-size: 18px;
 `;
 
 export const Btn = styled.button`
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
 width: 28px;
 height: 28px;
-padding-top: 4px;
+text-align: center;
 font-size: 12px bold;
 background-color: transparent;
 border: transparent;
