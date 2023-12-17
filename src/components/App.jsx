@@ -1,19 +1,18 @@
 import { GlobalStyle } from "GlobalStyle";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, lazy } from "react";
 import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./Layout/Layout";
-
-import HomePage from "pages/HomePage";
-import RegistrationPage from "pages/RegistrationPage";
-import LoginPage from "pages/LoginPage";
-import MyPhonebookPage from "pages/MyPhonebookPage";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsRefreshing } from "redux/authorization/authSelectors";
 import { refresh } from "redux/authorization/authOperations";
 import { PrivateRoute } from "./PrivateRoute/PrivateRoute";
 import { RestrictedRoute } from "./RestrictedRoute/RestrictedRoute";
 
+const HomePage = lazy(() => import("pages/HomePage"));
+const RegistrationPage = lazy(() => import("pages/RegistrationPage"));
+const LoginPage = lazy(() => import("pages/LoginPage"));
+const MyPhonebookPage = lazy(() => import("pages/MyPhonebookPage"));
 
 
 export const App = () => {
