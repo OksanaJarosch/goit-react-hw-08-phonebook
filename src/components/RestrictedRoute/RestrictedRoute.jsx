@@ -4,7 +4,7 @@ import { selectIsLoggedin } from "redux/authorization/authSelectors"
 
 
 
-export const PrivateRoute = ({component: Component, redirect = "/"}) => {
+export const RestrictedRoute = ({component: Component, redirect = "/"}) => {
     
     const isLoggedin = useSelector(selectIsLoggedin);
 
