@@ -1,10 +1,11 @@
+import { User } from "components/User/User";
 
 
-export default function LoginPage () {
+export default function MyPhonebookPage () {
 
     return (
         <>
-        
+        <User/>
         </>
     )
 }

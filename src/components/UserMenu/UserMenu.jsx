@@ -27,9 +27,9 @@ export const UserMenu = () => {
             )
                 : ( 
             <ButtonsContainer>
-            <Button type="button" colorScheme="purple"><Link to="register">Registration</Link></Button>
+            <Button type="button" colorScheme="purple"><Link to="/register">Registration</Link></Button>
         
-            <Button type="button" colorScheme="purple"><Link to="login">Login</Link></Button>
+            <Button type="button" colorScheme="purple"><Link to="/login">Login</Link></Button>
             </ButtonsContainer>
             )}
 

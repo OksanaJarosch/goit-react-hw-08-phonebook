@@ -4,9 +4,9 @@ import { selectIsLoggedin } from "redux/authorization/authSelectors"
 
 
 
-export const RestrictedRoute = ({component: Component, redirect = "/"}) => {
+export const RestrictedRoute = ({component: Component, redirectTo = "/"}) => {
     
     const isLoggedin = useSelector(selectIsLoggedin);
 
-    return isLoggedin ? (<Navigate to="redirect" />) : Component;
+    return isLoggedin ? (<Navigate to={redirectTo} />) : Component;
 }

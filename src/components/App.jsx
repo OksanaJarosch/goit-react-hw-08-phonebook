@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsRefreshing } from "redux/authorization/authSelectors";
 import { refresh } from "redux/authorization/authOperations";
 import { PrivateRoute } from "./PrivateRoute/PrivateRoute";
-import { RestrictedRoute} from "./RestrictedRoute/RestrictedRoute"
+import { RestrictedRoute } from "./RestrictedRoute/RestrictedRoute";
 
 
 
@@ -33,10 +33,10 @@ export const App = () => {
         <Route path="/" element={<Layout/>}>
 
           <Route index element={<HomePage/>}/>
-            <Route path="register" element={<RestrictedRoute component={<RegistrationPage />} redirect="contacts" />} />
-            <Route path="login" element={<RestrictedRoute component={<LoginPage />} redirect="contacts" />} />
+            <Route path="register" element={<RestrictedRoute component={<RegistrationPage />} redirectTo="/contacts" />} />
+            <Route path="login" element={<RestrictedRoute component={<LoginPage />} redirectTo="/contacts" />} />
 
-            <Route path="contacts" element={<PrivateRoute component={<MyPhonebookPage/>} redirect = "login"/>}/>
+            <Route path="contacts" element={<PrivateRoute component={<MyPhonebookPage/>} redirectTo = "/login"/>}/>
 
         </Route>
       </Routes>
