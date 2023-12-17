@@ -11,6 +11,9 @@ import MyPhonebookPage from "pages/MyPhonebookPage";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsRefreshing } from "redux/authorization/authSelectors";
 import { refresh } from "redux/authorization/authOperations";
+import { PrivateRoute } from "./PrivateRoute/PrivateRoute";
+import { RestrictedRoute} from "./RestrictedRoute/RestrictedRoute"
+
 
 
 export const App = () => {
@@ -30,9 +33,10 @@ export const App = () => {
         <Route path="/" element={<Layout/>}>
 
           <Route index element={<HomePage/>}/>
-          <Route path="register" element={<RegistrationPage/>}/>
-          <Route path="login" element={<LoginPage/>}/>
-          <Route path="contacts" element={<MyPhonebookPage/>}/>
+            <Route path="register" element={<RestrictedRoute component={<RegistrationPage />} redirect="contacts" />} />
+            <Route path="login" element={<RestrictedRoute component={<LoginPage />} redirect="contacts" />} />
+
+            <Route path="contacts" element={<PrivateRoute component={<MyPhonebookPage/>} redirect = "login"/>}/>
 
         </Route>
       </Routes>
