@@ -8,7 +8,14 @@ export const authSlice = createSlice({
         user: {name: null, email: null},
         isLoggedin: false,
         token: "",
-        isRefreshing: false
+        isRefreshing: false,
+        isError: false
+    },
+
+    reducers: {
+        resetError: state => {
+            state.isError = false;
+        }
     },
 
     extraReducers: (builder) => {
@@ -20,9 +27,11 @@ export const authSlice = createSlice({
             state.user = action.payload.user;
             state.token = action.payload.token;
             state.isLoggedin = true;
+            state.isError = false;
         })
         .addCase(registration.rejected, (state) => {
             state.isLoggedin = false;
+            state.isError = true;
         })
 
         .addCase(login.pending, (state) => {
@@ -32,9 +41,11 @@ export const authSlice = createSlice({
             state.user = action.payload.user;
             state.token = action.payload.token;
             state.isLoggedin = true;
+            state.isError = false;
         })
         .addCase(login.rejected, (state) => {
             state.isLoggedin = false;
+            state.isError = true;
         })
 
         .addCase(logout.pending, (state) => {
@@ -44,9 +55,11 @@ export const authSlice = createSlice({
             state.user = {name: null, email: null};
             state.token = null;
             state.isLoggedin = false;
+            state.isError = false;
         })
         .addCase(logout.rejected, (state) => {
             state.isLoggedin = true;
+            state.isError = true;
         })
 
         .addCase(refresh.pending, (state) => {
@@ -56,13 +69,16 @@ export const authSlice = createSlice({
             state.user = action.payload;
                 state.isRefreshing = false;
                 state.isLoggedin = true;
+                state.isError = false;
         })
         .addCase(refresh.rejected, (state) => {
             state.isRefreshing = false;
             state.isLoggedin = false;
+            state.isError = false;
         })
     }
 
 })
 
 export const authReducer = authSlice.reducer;
+export const {resetError} = authSlice.actions;

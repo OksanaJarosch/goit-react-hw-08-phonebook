@@ -7,3 +7,5 @@ export const selectIsLoggedin = state => state.authorization.isLoggedin;
 export const selectIsRefreshing = state => state.authorization.isRefreshing;
 
 export const selectToken = state => state.authorization.token;
+
+export const selectIsError = state => state.authorization.isError;

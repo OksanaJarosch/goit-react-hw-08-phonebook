@@ -11,8 +11,12 @@ import {
     VStack
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from 'redux/authorization/authOperations';
+import { selectIsError } from 'redux/authorization/authSelectors';
+import { Report } from 'notiflix/build/notiflix-report-aio';
+import { useEffect } from 'react';
+import { resetError } from 'redux/authorization/authSlice';
 
 
 const schema = Yup.object().shape({
@@ -24,6 +28,7 @@ const schema = Yup.object().shape({
 export const LoginForm = () => {
 
     const dispatch = useDispatch();
+    const isError = useSelector(selectIsError);
 
     const formik = useFormik({
         initialValues: {
@@ -36,7 +41,21 @@ export const LoginForm = () => {
             }}
     )
 
+    useEffect(() => {
+    if (isError) {
+        Report.failure(
+        'Login Failed',
+        'Your email or password is incorrect. Please try again.',
+        'Okay',
+        () => {
+        dispatch(resetError());
+        }
+    );
+    }
+    }, [isError, dispatch]);
+
     return (
+        <>
         <Flex align="center" justify="center" marginTop="10%">
             <Box bg="white" p={6} rounded="md">
                 <form onSubmit={formik.handleSubmit}>
@@ -75,5 +94,14 @@ export const LoginForm = () => {
                 </form>
             </Box>
         </Flex>
-    );
+        
+            {/* {isError && (
+                Report.failure(
+'Login Failed',
+'Your email or password is incorrect. Please try again.',
+'Okay',
+)
+        )} */}
+        </>
+        );
     }
