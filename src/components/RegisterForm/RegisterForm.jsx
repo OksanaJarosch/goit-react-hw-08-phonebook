@@ -11,8 +11,12 @@ import {
     VStack
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registration } from 'redux/authorization/authOperations';
+import { Report } from 'notiflix/build/notiflix-report-aio';
+import { useEffect } from 'react';
+import { resetError } from 'redux/authorization/authSlice';
+import { selectIsError } from 'redux/authorization/authSelectors';
 
 
 const schema = Yup.object().shape({
@@ -25,6 +29,7 @@ const schema = Yup.object().shape({
 export const RegisterForm = () => {
 
     const dispatch = useDispatch();
+    const isError = useSelector(selectIsError);
 
     const formik = useFormik({
         initialValues: {
@@ -37,6 +42,19 @@ export const RegisterForm = () => {
             dispatch(registration(values))          
             }}
     )
+
+    useEffect(() => {
+    if (isError) {
+        Report.failure(
+        'Error',
+        'Probably this email is already registered, please try another one.',
+        'Okay',
+        () => {
+        dispatch(resetError());
+        }
+    );
+    }
+    }, [isError, dispatch]);
 
     return (
         <Flex bg="gray.100" align="center" justify="center" marginTop="10%">

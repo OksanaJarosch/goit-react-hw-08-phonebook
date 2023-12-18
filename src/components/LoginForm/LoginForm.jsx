@@ -55,7 +55,6 @@ export const LoginForm = () => {
     }, [isError, dispatch]);
 
     return (
-        <>
         <Flex align="center" justify="center" marginTop="10%">
             <Box bg="white" p={6} rounded="md">
                 <form onSubmit={formik.handleSubmit}>
@@ -94,14 +93,5 @@ export const LoginForm = () => {
                 </form>
             </Box>
         </Flex>
-        
-            {/* {isError && (
-                Report.failure(
-'Login Failed',
-'Your email or password is incorrect. Please try again.',
-'Okay',
-)
-        )} */}
-        </>
         );
     }
