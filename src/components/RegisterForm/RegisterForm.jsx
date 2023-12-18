@@ -18,7 +18,7 @@ import { registration } from 'redux/authorization/authOperations';
 const schema = Yup.object().shape({
     name: Yup.string().min(3, "Too short").required('Required'),
     email: Yup.string().email().required('Required'),
-    password: Yup.string().min(5, "Too short").required('Required'),
+    password: Yup.string().min(7, "Too short").required('Required'),
 });
 
 
@@ -39,7 +39,7 @@ export const RegisterForm = () => {
     )
 
     return (
-        <Flex bg="gray.100" align="center" justify="center" h="100vh">
+        <Flex bg="gray.100" align="center" justify="center" marginTop="10%">
             <Box bg="white" p={8} rounded="md">
                 <form onSubmit={formik.handleSubmit}>
                     <VStack spacing={4} align="flex-start">

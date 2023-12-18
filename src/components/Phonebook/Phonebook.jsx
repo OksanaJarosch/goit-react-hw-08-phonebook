@@ -1,11 +1,12 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { StyledForm, StyledInput, StyledLabel, StyledButton, Error } from './Phonebook.styled';
+import { StyledForm, StyledInput, StyledLabel, Error } from './Phonebook.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 import { addNewContact } from 'redux/contacts/operations';
 import { selectContacts, selectIsLoading } from 'redux/selectors';
 import toast from 'react-hot-toast';
+import { Button } from '@chakra-ui/react';
 
 
 const schema = Yup.object().shape({
@@ -62,7 +63,7 @@ export const Phonebook = () => {
                             <StyledInput type="tel" name="number" placeholder="Enter a number"/>
                             <Error name="number" component="p"/>
                     </StyledLabel>
-                    <StyledButton type="submit" disabled={isLoading}>Add contact</StyledButton>
+                    <Button variant='outline' colorScheme="purple" size='sm' marginTop="4" type="submit" disabled={isLoading}>Add contact</Button>
                     </StyledForm>
                 </Formik>
     )

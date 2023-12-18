@@ -15,10 +15,10 @@ const isLoading = useSelector(selectIsLoading);
 
 return (
     <Container>
-    <Title>Phonebook</Title>
+    <Title>New Contact</Title>
     <Phonebook></Phonebook>
 
-    <Title>Contacts</Title>
+    <Title>My Phonebook</Title>
     {contacts.length > 0 ? <Filter></Filter>
         : (!error && !isLoading && <p>You don't have any contacts</p>)}
     <Contacts></Contacts> 

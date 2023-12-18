@@ -17,7 +17,7 @@ import { login } from 'redux/authorization/authOperations';
 
 const schema = Yup.object().shape({
     email: Yup.string().email().required('Required'),
-    password: Yup.string().min(5, "Too short").required('Required'),
+    password: Yup.string().min(7, "Too short").required('Required'),
 });
 
 
@@ -37,7 +37,7 @@ export const LoginForm = () => {
     )
 
     return (
-        <Flex align="center" justify="center" h="100vh">
+        <Flex align="center" justify="center" marginTop="10%">
             <Box bg="white" p={6} rounded="md">
                 <form onSubmit={formik.handleSubmit}>
                     <VStack spacing={4} align="flex-start">

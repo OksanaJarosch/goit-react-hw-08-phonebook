@@ -8,11 +8,13 @@ margin-bottom:36px;
 
 export const StyledInput = styled(Field)`
 display: block;
+width: 250px;
 margin: 8px 0;
-padding: 4px;
+padding: 16px;
 font-size: 16px;
-border-radius: 4px;
-border: 1px solid gray;
+border-radius: 6px;
+border: 1px solid #dcdcdc;
+height: 32px;
 `;
 
 export const Error = styled(ErrorMessage)`
