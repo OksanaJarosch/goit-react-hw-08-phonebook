@@ -14,9 +14,9 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from 'redux/authorization/authOperations';
 import { selectIsError } from 'redux/authorization/authSelectors';
-import { Report } from 'notiflix/build/notiflix-report-aio';
 import { useEffect } from 'react';
 import { resetError } from 'redux/authorization/authSlice';
+import toast from 'react-hot-toast';
 
 
 const schema = Yup.object().shape({
@@ -42,16 +42,10 @@ export const LoginForm = () => {
     )
 
     useEffect(() => {
-    if (isError) {
-        Report.failure(
-        'Login Failed',
-        'Your email or password is incorrect. Please try again.',
-        'Okay',
-        () => {
-        dispatch(resetError());
+        if (isError) {
+            toast.error('Your email or password is incorrect')
+            dispatch(resetError());
         }
-    );
-    }
     }, [isError, dispatch]);
 
     return (
